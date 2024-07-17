@@ -1,4 +1,7 @@
+import 'package:book_grocer/Services/my_services.dart';
 import 'package:book_grocer/common/color_extenstion.dart';
+import 'package:book_grocer/view/cart.dart';
+import 'package:book_grocer/view/wishlist.dart';
 import 'package:flutter/material.dart';
 
 import '../account/account_view.dart';
@@ -25,11 +28,13 @@ class _MainTabViewState extends State<MainTabView>
     {"name": "Home", "icon": Icons.home},
     {"name": "Our Books", "icon": Icons.book},
     {"name": "Our Stores", "icon": Icons.storefront},
-    {"name": "Careers", "icon": Icons.business_center},
-    {"name": "Sell With Us", "icon": Icons.attach_money},
-    {"name": "Newsletter", "icon": Icons.newspaper},
-    {"name": "Pop-up Leasing", "icon": Icons.open_in_new},
-    {"name": "Account", "icon": Icons.account_circle}
+    {"name": "Welcome", "icon": Icons.business_center},
+    // {"name": "Sell With Us", "icon": Icons.attach_money},
+    // {"name": "Newsletter", "icon": Icons.newspaper},
+    // {"name": "Pop-up Leasing", "icon": Icons.open_in_new},
+    {"name": "Account", "icon": Icons.account_circle},
+    {"name": "Logout", "icon": Icons.exit_to_app}
+
   ];
 
   @override
@@ -83,17 +88,40 @@ class _MainTabViewState extends State<MainTabView>
                         child: GestureDetector(
                           onTap: () {
 
-                            if(index == 1) {
+                            if(index == 0) {
 
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const OurBooksView()  ) );
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const MainTabView()  ) );
                                 sideMenuScaffoldKey.currentState?.closeEndDrawer();
 
-                            }else if (index == 7) {
+                            }
+                            else if (index == 1) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const OurBooksView()));
+
+                              sideMenuScaffoldKey.currentState
+                                  ?.closeEndDrawer();
+                            }
+                            else if (index == 5) {
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //         const AccountView()));
+                              ServicesHub.userLogout(context);
+
+                              sideMenuScaffoldKey.currentState
+                                  ?.closeEndDrawer();
+                            }
+                            else if (index == 7) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const AccountView()));
+
                               sideMenuScaffoldKey.currentState
                                   ?.closeEndDrawer();
                             }
@@ -181,6 +209,25 @@ class _MainTabViewState extends State<MainTabView>
       body: TabBarView(controller: controller, children: [
         const HomeView(),
         const SearchView(),
+        const WishlistPage(),
+         const CartPage(cartItems: [
+          {
+            "img": "assets/img/b1.jpg",
+            "name": "Book Title 1",
+            "author": "Author 1",
+            "rating": "4.5",
+            "price": 20,
+            "quantity": 1
+          },
+          {
+            "img": "assets/img/b2.jpg",
+            "name": "Book Title 2",
+            "author": "Author 2",
+            "rating": "4.0",
+            "price": 15,
+            "quantity": 1
+          }
+        ]),
         Container(),
         Container(),
       ]),

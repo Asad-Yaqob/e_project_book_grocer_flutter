@@ -1,4 +1,4 @@
-package com.codeforany.book_grocer
+package com.thebookgrocer
 
 import io.flutter.embedding.android.FlutterActivity
 

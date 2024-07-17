@@ -1,3 +1,4 @@
+import 'package:book_grocer/Services/my_services.dart';
 import 'package:book_grocer/common/color_extenstion.dart';
 import 'package:book_grocer/view/login/forgot_password_view.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  TextEditingController txtCode = TextEditingController();
   TextEditingController txtEmail = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
   bool isStay = false;
@@ -51,10 +51,10 @@ class _SignInViewState extends State<SignInView> {
               const SizedBox(
                 height: 15,
               ),
-              RoundTextField(
-                controller: txtCode,
-                hintText: "Optional Group Special Code",
-              ),
+              // RoundTextField(
+              //   controller: txtCode,
+              //   hintText: "Optional Group Special Code",
+              // ),
               const SizedBox(
                 height: 15,
               ),
@@ -115,7 +115,9 @@ class _SignInViewState extends State<SignInView> {
               ),
               RoundLineButton(
                 title: "Sign In",
-                onPressed: () {},
+                onPressed: () {
+                  ServicesHub.userLogin(txtEmail,txtPassword,context);
+                },
               )
             ],
           ),

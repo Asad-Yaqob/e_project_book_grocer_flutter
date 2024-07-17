@@ -1,3 +1,4 @@
+import 'package:book_grocer/Services/my_services.dart';
 import 'package:book_grocer/common/color_extenstion.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,9 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               
               RoundLineButton(
                 title: "Submit",
-                onPressed: () {},
+                onPressed: () {
+                  ServicesHub.forgetPassword(txtEmail, context);
+                },
               )
             ],
           ),

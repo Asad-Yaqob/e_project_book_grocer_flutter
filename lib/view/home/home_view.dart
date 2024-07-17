@@ -132,7 +132,7 @@ class _HomeViewState extends State<HomeView> {
                     AppBar(
                       backgroundColor: Colors.transparent,
                       elevation: 0,
-                      title: Row(children: const [
+                      title: const Row(children: [
                         Text(
                           "Our Top Picks",
                           style: TextStyle(

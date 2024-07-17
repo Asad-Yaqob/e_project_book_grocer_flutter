@@ -1,3 +1,4 @@
+import 'package:book_grocer/Services/my_services.dart';
 import 'package:book_grocer/view/login/help_us_view.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,10 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  TextEditingController txtFirstName = TextEditingController();
+  // TextEditingController txtFirstName = TextEditingController();
   TextEditingController txtEmail = TextEditingController();
-  TextEditingController txtMobile = TextEditingController();
-  TextEditingController txtCode = TextEditingController();
+  // TextEditingController txtMobile = TextEditingController();
+  // TextEditingController txtCode = TextEditingController();
   TextEditingController txtPassword = TextEditingController();
   bool isStay = false;
 
@@ -50,13 +51,13 @@ class _SignUpViewState extends State<SignUpView> {
                     fontSize: 24,
                     fontWeight: FontWeight.w700),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              RoundTextField(
-                controller: txtFirstName,
-                hintText: "First & Last Name",
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // RoundTextField(
+              //   controller: txtFirstName,
+              //   hintText: "First & Last Name",
+              // ),
               const SizedBox(
                 height: 15,
               ),
@@ -64,24 +65,24 @@ class _SignUpViewState extends State<SignUpView> {
                   controller: txtEmail,
                   hintText: "Email Address",
                   keyboardType: TextInputType.emailAddress),
+              // const SizedBox(
+              //   height: 15,
+              // ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
+              // RoundTextField(
+              //   controller: txtMobile,
+              //   hintText: "Mobile Phone",
+              //   keyboardType: TextInputType.phone,
+              // ),
               const SizedBox(
                 height: 15,
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              RoundTextField(
-                controller: txtMobile,
-                hintText: "Mobile Phone",
-                keyboardType: TextInputType.phone,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              RoundTextField(
-                controller: txtCode,
-                hintText: "Group Special Code (optional)",
-              ),
+              // RoundTextField(
+              //   controller: txtCode,
+              //   hintText: "Group Special Code (optional)",
+              // ),
               const SizedBox(
                 height: 15,
               ),
@@ -125,7 +126,7 @@ class _SignUpViewState extends State<SignUpView> {
               RoundLineButton(
                 title: "Sign Up",
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder:  (context) => const HelpUsView()  ));
+                 ServicesHub.userRegister(txtEmail, txtPassword, context);
                 },
               )
             ],
